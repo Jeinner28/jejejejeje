@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Food - La Guaira</title>
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="hero__section">
+        <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="Header/2.png">
+                <div class="content">
+                    <div class="author"></div>
+                    <div class="title">BIENVENIDOS A HIGH FOOD - LA GUAIRA</div>
+                    <div class="topic"></div>
+                    <div class="des">
+                        <!-- paragraph -->
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Header/hamburguesas.png">
+                <div class="content">
+                    <div class="author">HIGH FOOD</div>
+                    <div class="title">DESGUSTA CON HAMBURGUESAS TOP DE TODA LA GUAIRA</div>
+                    <div class="topic"></div>
+                    <div class="des">
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Header/delivery.png">
+                <div class="content">
+                    <div class="author"></div>
+                    <div class="title">¡PIDE PARA LLEVAR!</div>
+                    <div class="topic">CONTAMOS CON SERVICIO DELIVERY</div>
+                    <div class="des">
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Header/redes-sociales.png">
+                <div class="content">
+                    <div class="author"></div>
+                    <div class="title"></div>
+                    <div class="topic"></div>
+                    <div class="des">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="Header/2.png">
+                <div class="content">
+                    <div class="title">
+                        <!--Name Slider-->
+                    </div>
+                    <div class="description">
+                        <!--Description-->
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Header/hamburguesas.png">
+                <div class="content">
+                    <div class="title">
+                        <!--Name Slider-->
+                    </div>
+                    <div class="description">
+                        <!--Description-->
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Header/delivery.png">
+                <div class="content">
+                    <div class="title">
+                        <!--Name Slider-->
+                    </div>
+                    <div class="description">
+                        <!--Description-->
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Header/redes-sociales.png">
+                <div class="content">
+                    <div class="title">
+                        <!--Name Slider-->
+                    </div>
+                    <div class="description">
+                        <!--Description-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+    </header>
+
+
+
+  <div id="app">
+    <!-- Botón del carrito -->
+    <button id="cartButton">
+      🛒 <span id="cartCount">0</span>
+    </button>
+
+    
+
+    <!-- Menú -->
+    <div id="menu"></div>
+
+    <!-- Carrito -->
+    <div id="cartPanel">
+      <h2>🛒 Carrito</h2>
+      <ul id="cartItems"></ul>
+      <p id="cartTotal">Total: $0</p>
+      <button onclick="location.href='checkoutForm'" id="checkoutBtn">Finalizar Pedido</button>
+
+      <!-- Formulario de checkout -->
+      <div id="checkoutForm" class="hidden">
+        <input id="name" type="text" placeholder="Nombre completo">
+        <input id="phone" type="text" placeholder="Número de teléfono">
+        <select id="deliveryMethod">
+          <option value="">Seleccionar opción</option>
+          <option value="delivery">Delivery</option>
+          <option value="pickup">Pick-up</option>
+          <option value="store">Comer en tienda</option>
+        </select>
+        <select id="paymentMethod">
+          <option value="">Seleccionar método de pago</option>
+          <option value="pago_movil">Pago Móvil</option>
+          <option value="paypal">PayPal</option>
+          <option value="binance">Binance</option>
+          <option value="zelle">Zelle</option>
+        </select>
+
+        <div id="paymentInfo" class="hidden"></div>
+
+        <input id="reference" type="text" placeholder="Código de referencia de pago">
+        <button id="sendOrder">Enviar Pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Producto -->
+  <div id="productModal" class="hidden">
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="" alt="">
+      <div id="modalIngredientsText" class="modal-ingredients-text"></div>
+      
+      <p>Personaliza tu orden, desmarca un ingrediente si no lo deseas:</p>
+      <div id="modalIngredients"></div>
+
+        <!-- Extras -->
+<div id="modalExtras" class="modal-extras">
+  <p>Extras disponibles:</p>
+  <label><input type="checkbox" value="0.50"> Extra Queso (+$0.50)</label>
+  <label><input type="checkbox" value="0.50"> Extra Tocineta (+$0.50)</label>
+  <label><input type="checkbox" value="0.50"> Extra Huevo (+$0.50)</label>
+</div>
+
+<!-- Papas Fritas -->
+<div id="modalFries" class="modal-fries">
+  <label><input type="checkbox" value="1.50"> Añadir Papas Fritas (+$1.50)</label>
+</div>
+
+
+      
+  <div class="quantity">
+  <label>Cantidad:</label>
+  <button type="button" class="qty-btn" id="decreaseQty">−</button>
+  <span id="modalQuantity">1</span>
+  <button type="button" class="qty-btn" id="increaseQty">+</button>
+</div>
+
+    
+
+
+
+
+      <div id="modalDescription" class="modal-description"></div>
+      <div class="modal-actions">
+        <button id="cancelModal">Cancelar</button>
+        <button id="addToCart">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
