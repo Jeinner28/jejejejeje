@@ -293,9 +293,7 @@ checkoutBtn.onclick = () => {
 paymentMethod.onchange = (e) => {
   let totalUSD = cart.reduce((sum, i) => sum + i.totalPrice, 0);
   let info = "";
-  if (e.target.value === "pago_movil") info = `Banco: XXXX<br>Número: 0412-XXXXXXX<br>CI: V-XXXXXXXX<br>Monto: ${formatMoney(totalUSD*180)} Bs`;
-  if (e.target.value === "paypal") info = `Cuenta PayPal: ejemplo@paypal.com<br>Monto: ${formatMoney(totalUSD)} USD`;
-  if (e.target.value === "binance") info = `Wallet Binance: xxxxxxx<br>Monto: ${formatMoney(totalUSD)} USD`;
+  if (e.target.value === "pago_movil") info = `Banco: XXXX<br>Número: 0412-XXXXXXX<br>CI: V-XXXXXXXX<br>Monto: ${formatMoney(totalUSD*194)} Bs`;
   if (e.target.value === "zelle") info = `Cuenta Zelle: ejemplo@zelle.com<br>Monto: ${formatMoney(totalUSD)} USD`;
   paymentInfo.innerHTML = info;
   paymentInfo.classList.remove("hidden");
